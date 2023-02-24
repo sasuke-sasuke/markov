@@ -10,7 +10,17 @@ try {
   process.exit(1);
 }
 
-const data = fs.readFileSync(argv, "utf8");
+const markov = makeMarkovMachine();
+//console.log(markov.makeText());
+console.log("---------------------------------------");
+console.log(markov.markovChain);
+console.log("---------------------------------------");
 
-markov = new MarkovMachine(data);
-console.log(markov.makeText());
+function makeMarkovMachine() {
+  try {
+    const data = fs.readFileSync(argv, "utf8");
+    return new MarkovMachine(data);
+  } catch (err) {
+    console.log(err);
+  }
+}

@@ -18,9 +18,9 @@ class MarkovMachine {
     const markovChain = new Map();
     for (let i = 0; i < this.words.length; i++) {
       if (!markovChain.has(this.words[i])) {
-        markovChain.set(this.words[i], [this.words[i + 1]]);
+        markovChain.set(this.words[i], [this.words[i + 1] || null]);
       } else {
-        markovChain.get(this.words[i]).push(this.words[i + 1]);
+        markovChain.get(this.words[i]).push(this.words[i + 1] || null);
       }
     }
     this.markovChain = markovChain;
